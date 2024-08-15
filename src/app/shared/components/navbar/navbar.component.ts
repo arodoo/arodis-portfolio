@@ -58,6 +58,6 @@ export class NavbarComponent implements AfterViewInit {
       this.displayText = '';
       const randomMessage = this.messagesService.getRandomMessage();
       this.typeText(randomMessage, () => this.loopRandomMessages());
-    }, 500);
+    }, 3500);
   }
 }

@@ -5,8 +5,8 @@ import { randomMessages } from '../../shared/utils/messages';
   providedIn: 'root'
 })
 export class MessagesService {
-  private title: string = 'Título dinámico';
-  private text: string = 'Texto dinámico que se mostrará con animación.';
+  private title: string = 'Hi, my name is Emmanuel.';
+  private text: string = 'And I am searching for a fun way to spend my life.';
   private randomMessages: string[] = randomMessages;
 
   getTitle(): string {

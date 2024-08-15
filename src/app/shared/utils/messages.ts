@@ -1,12 +1,12 @@
 export const randomMessages: string[] = [
-    'Mensaje 1',
-    'Mensaje 2',
-    'Mensaje 3',
-    'Mensaje 4',
-    'Mensaje 5',
-    'Mensaje 6',
-    'Mensaje 7',
-    'Mensaje 8',
-    'Mensaje 9',
-    'Mensaje 10'
+    'In God we trust.',
+    'In the beginning, God created the heavens and the earth.',
+    'I know that I know nothing.',
+    'We are the only one left.',
+    'We will rise.',
+    'The time is gone, the song is over.',
+    'All we need is love.',
+    'Am I a butterfly dreaming I am a human?',
+    'I Think, Therefore I Am.',
+    'Let\'s divide the atom.'
 ];
