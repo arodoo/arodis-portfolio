@@ -5,6 +5,7 @@ nav {
     z-index: 2;
     color: white;
     padding: 10px;
+    margin: 4rem 0 0 3rem;
 }
 
 a {
@@ -19,25 +20,24 @@ a {
 .line1,
 .line2 {
     display: block;
-    margin: 5px 0;
+    margin: .5rem 0;
 }
 
 .line1 {
-    font-size: 24px;
+    font-size: 1.4rem;
 }
 
 .line2 {
-    font-size: 18px;
-
+    font-size: 1rem;
 }
 
 /* Media query para responsividad */
 @media (max-width: 600px) {
     .line1 {
-        font-size: 20px;
+        font-size: 2rem;
     }
 
     .line2 {
-        font-size: 16px;
+        font-size: 1rem;
     }
 }

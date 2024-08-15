@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { typeTextContent } from '../../utils/text-typing.util';
 
 @Component({
   selector: 'app-navbar',
@@ -14,31 +15,28 @@ export class NavbarComponent implements OnInit {
   displayText: string = '';
 
   ngOnInit() {
+    this.launchTyping();
+  }
+
+  private typeTitle() {
+    typeTextContent(this.title, (char) => this.displayTitle += char, 50);
+  }
+
+  private typeText() {
+    typeTextContent(this.text, (char) => this.displayText += char, 50);
+  }
+
+  //function to launch text typing
+  async launchTyping() {
+    this.displayTitle = '';
+    this.displayText = '';
     this.typeTitle();
+    await this.delay(1800);
     this.typeText();
   }
 
-  typeTitle() {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < this.title.length) {
-        this.displayTitle += this.title.charAt(i);
-        i++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 50);
-  }
-
-  typeText() {
-    let i = 0;
-    const interval = setInterval(() => {
-      if (i < this.text.length) {
-        this.displayText += this.text.charAt(i);
-        i++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 50);
+  //function to make a delay
+  delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 }
