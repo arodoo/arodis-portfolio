@@ -17,7 +17,6 @@ export class HeaderComponent implements AfterViewInit {
     if (this.canvas) {
       const canvasElement: ElementRef<HTMLCanvasElement> = this.canvas;
       this.threeLucyService.init(canvasElement);
-
     }
   }
 }
