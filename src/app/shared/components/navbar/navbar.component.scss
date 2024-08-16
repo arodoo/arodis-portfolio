@@ -20,15 +20,16 @@ a {
 .line1,
 .line2 {
     display: block;
-    margin: .5rem 0;
+    margin: .8rem 0;
 }
 
 .line1 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
 }
 
 .line2 {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    margin-left: .3rem;
 }
 
 /* Media query para responsividad */

@@ -38,7 +38,7 @@ export class NavbarComponent implements AfterViewInit {
     this.displayTitle = '';
     this.displayText = '';
     this.typeTitle();
-    await this.delay(1800);
+    await this.delay(3500);
     this.typeText(this.messagesService.getText(), () => this.startClientLoop());
   }
 
@@ -58,6 +58,6 @@ export class NavbarComponent implements AfterViewInit {
       this.displayText = '';
       const randomMessage = this.messagesService.getRandomMessage();
       this.typeText(randomMessage, () => this.loopRandomMessages());
-    }, 3500);
+    }, 4500);
   }
 }
