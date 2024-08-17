@@ -1,7 +1,6 @@
 import { Injectable, ElementRef, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
-import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +11,6 @@ export class ThreeService {
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
   private spotLight!: THREE.SpotLight;
-  private lightHelper!: THREE.SpotLightHelper;
-  private stats!: Stats;
   private clock = new THREE.Clock();
   private meshPlanet!: THREE.Mesh;
   private meshClouds!: THREE.Mesh;
@@ -29,20 +26,26 @@ export class ThreeService {
       this.setupCamera(canvas);
       this.setupLighting();
       this.loadModels();
-      this.setupStats();
+      //this.setupStats();
       this.addEventListeners();
       this.animate();
     }
   }
 
   private setupRenderer(canvas: ElementRef<HTMLCanvasElement>): void {
-    this.renderer = new THREE.WebGLRenderer({ canvas: canvas.nativeElement, antialias: true });
+    this.renderer = new THREE.WebGLRenderer(
+      { 
+        canvas: canvas.nativeElement,
+         antialias: true,
+         alpha: true 
+        });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
     this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
     this.renderer.toneMappingExposure = 1;
+    this.renderer.setClearColor(0x000000, 0);
   }
 
   private setupScene(): void {
@@ -82,9 +85,6 @@ export class ThreeService {
     this.spotLight.shadow.camera.far = 10;
     this.spotLight.shadow.focus = 1;
     this.scene.add(this.spotLight);
-
-    this.lightHelper = new THREE.SpotLightHelper(this.spotLight);
-    //this.scene.add(this.lightHelper);
 
     const planeGeometry = new THREE.PlaneGeometry(200, 200);
     const planeMaterial = new THREE.MeshLambertMaterial({ color: 0xbabcbc });
@@ -146,11 +146,6 @@ export class ThreeService {
     this.scene.add(this.meshMoon);
   }
 
-  private setupStats(): void {
-    this.stats = new Stats();
-    document.body.appendChild(this.stats.dom);
-  }
-
   private addEventListeners(): void {
     window.addEventListener('resize', this.onWindowResize.bind(this));
   }
@@ -162,7 +157,7 @@ export class ThreeService {
     this.meshClouds.rotation.y += 1.25 * this.rotationSpeed * delta;
     this.meshMoon.rotation.y += this.rotationSpeed * delta; // Rotar la luna
     this.meshMoon.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), this.rotationSpeed * delta); // Orbitar la luna
-    this.stats.update();
+    //this.stats.update();
     this.renderer.render(this.scene, this.camera);
   }
 
