@@ -14,7 +14,6 @@ export class NavbarComponent implements AfterViewInit {
   displayText: string = '';
 
   constructor(private messagesService: MessagesService) {
-
     
   }
 

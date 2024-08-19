@@ -2,13 +2,20 @@ canvas {
     max-width: 48.438rem;
     max-height: 28.813rem;
     display: block;
-    background-color: transparent !important;
+    //rgb background-color
+    background-color: rgba(0, 0, 0, 0.021);
     border: none !important;
 }
 
-        .canvas-container {
-            //position: relative;
-            //width: 100%;
-            //padding-top: 56.25%;
-            /* Relación de aspecto 16:9 */
-        }
+.canvas-container {
+    justify-content: left;
+}
+
+.main {
+    //background-image: url('/assets/background-universe.png');
+    background-size: cover;
+    //background-color: rgb(red, green, blue);
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Asegura que el fondo cubra toda la altura de la ventana */
+}
