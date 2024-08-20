@@ -22,7 +22,7 @@ export class NavbarComponent implements AfterViewInit {
   }
 
   private typeTitle() {
-    const title = this.messagesService.getTitle();
+    const title = this.messagesService.getNavBarTitle();
     typeTextContent(title, (char) => (this.displayTitle += char), 50);
   }
 
@@ -37,8 +37,8 @@ export class NavbarComponent implements AfterViewInit {
     this.displayTitle = '';
     this.displayText = '';
     this.typeTitle();
-    await this.delay(3500);
-    this.typeText(this.messagesService.getText(), () => this.startClientLoop());
+    await this.delay(2500);
+    this.typeText(this.messagesService.getNavBarText(), () => this.startClientLoop());
   }
 
   //function to make a delay

@@ -1,21 +1,37 @@
+@keyframes moveCanvas {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
 canvas {
     max-width: 48.438rem;
     max-height: 28.813rem;
     display: block;
-    //rgb background-color
     background-color: rgba(0, 0, 0, 0.021);
     border: none !important;
+    position: relative;
 }
 
+p{
+    white-space: normal;
+    max-width: 100%;
+}
+
+.main{
+    justify-content: center;
+    align-items: center;
+
+}
 .canvas-container {
-    justify-content: left;
+    justify-content: right;
+    //position: relative;
+    width: 100%;
+   // animation: moveCanvas 3s linear forwards;
 }
 
-.main {
-    //background-image: url('/assets/background-universe.png');
-    background-size: cover;
-    //background-color: rgb(red, green, blue);
-    background-position: center;
-    background-repeat: no-repeat;
-    /* Asegura que el fondo cubra toda la altura de la ventana */
-}
+

@@ -5,16 +5,33 @@ import { randomMessages } from '../../shared/utils/messages';
   providedIn: 'root'
 })
 export class MessagesService {
-  private title: string = 'Hi, my name is Emmanuel.';
-  private text: string = 'And I am searching for a fun way to spend my life.';
+  private navBartitle: string = 'Hi, my name is Emmanuel';
+  private navBartext: string = 'And I am searching for a fun way to spend my life.';
+
+  private aboutTitle: string = 'Time traveler';
+  private aboutSubTitle: string = 'Space explorer';
+  private aboutText: string = '“What is this life? A frenzy, an illusion, a shadow, a delirium, a fiction. The greatest good’s but little, and this life is but a dream, and dreams are only dreams.”';
+
   private randomMessages: string[] = randomMessages;
 
-  getTitle(): string {
-    return this.title;
+  getNavBarTitle(): string {
+    return this.navBartitle;
   }
 
-  getText(): string {
-    return this.text;
+  getNavBarText(): string {
+    return this.navBartext;
+  }
+
+  getAboutTitle(): string {
+    return this.aboutTitle;
+  }
+
+  getAboutText(): string {
+    return this.aboutText;
+  }
+
+  getAboutSubTitle(): string {
+    return this.aboutSubTitle;
   }
 
   getRandomMessage(): string {

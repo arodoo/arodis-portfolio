@@ -15,7 +15,7 @@ export class ThreeService {
   private meshPlanet!: THREE.Mesh;
   private meshClouds!: THREE.Mesh;
   private meshMoon!: THREE.Mesh; // Añadir la luna
-  private rotationSpeed = 0.02;
+  private rotationSpeed = 0.1;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
@@ -141,9 +141,9 @@ export class ThreeService {
     const moonMaterial = new THREE.MeshPhongMaterial({
       map: textures['moon_1024.jpg']
     });
-    this.meshMoon = new THREE.Mesh(moonGeometry, moonMaterial);
+/*     this.meshMoon = new THREE.Mesh(moonGeometry, moonMaterial);
     this.meshMoon.position.set(6371 * 1.5, 0, 0); // Colocar la luna a un costado de la Tierra
-    this.scene.add(this.meshMoon);
+    this.scene.add(this.meshMoon); */
   }
 
   private addEventListeners(): void {
@@ -155,9 +155,9 @@ export class ThreeService {
     const delta = this.clock.getDelta();
     this.meshPlanet.rotation.y += this.rotationSpeed * delta;
     this.meshClouds.rotation.y += 1.25 * this.rotationSpeed * delta;
-    this.meshMoon.rotation.y += this.rotationSpeed * delta; // Rotar la luna
+/*     this.meshMoon.rotation.y += this.rotationSpeed * delta; // Rotar la luna
     this.meshMoon.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), this.rotationSpeed * delta); // Orbitar la luna
-    //this.stats.update();
+    this.stats.update(); */
     this.renderer.render(this.scene, this.camera);
   }
 

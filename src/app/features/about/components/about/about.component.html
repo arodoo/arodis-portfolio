@@ -1,14 +1,16 @@
 <div class="main">
     <div class="row">
-        <div data-aos="fade-right" data-aos-duration="3000" class="col-md-6">
+        <div class="col-md-6">
             <div class="canvas-container">
-                <canvas #canvas></canvas>
+                <canvas #canvas id="scrollingCanvas"></canvas>
             </div>
         </div>
         <div class="col-md-6">
-            <h1>Time Traveler</h1>
-            <h2>Space explorer</h2>
-            <p>This is a simple Angular 2 application that demonstrates the use of Angular 2 with Webpack.</p>
+            <a>
+                <h1>{{displayTitle}}</h1>
+                <h2>{{displaySubTitle}}</h2>
+                <p>{{displayText}}</p>
+            </a>
         </div>
     </div>
 </div>

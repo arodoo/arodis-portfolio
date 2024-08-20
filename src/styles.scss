@@ -10,3 +10,12 @@ body {
     height: 100%;
     //overflow: hidden;
 }
+
+a {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid orange;
+    /* Efecto de cursor */
+    font-family: monospace;
+}
