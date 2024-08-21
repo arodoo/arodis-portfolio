@@ -5,7 +5,7 @@ import * as THREE from 'three';
 @Injectable({
   providedIn: 'root'
 })
-export class ThreeService {
+export class ThreeEarthService {
 
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;

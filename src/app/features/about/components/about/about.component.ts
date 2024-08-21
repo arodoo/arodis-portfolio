@@ -1,11 +1,15 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, Inject, PLATFORM_ID, HostListener } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+import { gsap } from 'gsap';
+import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
 import { typeTextContent } from '../../../../shared/utils/text-typing.util';
-import { ThreeService } from '../../../../core/services/three-earth.service';
+import { ThreeEarthService } from '../../../../core/services/three-earth.service';
 import { MessagesService } from '../../../../core/services/messages.service';
+//import { GsapService } from '../../../../core/services/gsap.service';
 
+gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-about',
   standalone: true,
@@ -25,55 +29,55 @@ export class AboutComponent implements AfterViewInit, OnInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     private messagesService: MessagesService,
-    private threeService: ThreeService
+    private threeEarthService: ThreeEarthService,
+    //private gsapService: GsapService
   ) { }
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      
+
     }
   }
 
   ngAfterViewInit(): void {
-    if (this.canvas) {
-      const canvasElement: ElementRef<HTMLCanvasElement> = this.canvas;
-      this.threeService.init(canvasElement);
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.canvas) {
+        const canvasElement = this.canvas.nativeElement;
+        this.threeEarthService.init(this.canvas);
+
+        gsap.to('.square', {
+          
+          scrollTrigger: {
+            trigger: '.square',
+            start: 'center 75%',
+            end: 'bottom 85%',
+            scrub: true,
+            pin: true,
+            markers: true,
+            onEnter: () => { document.body.style.overflow = 'hidden'; },
+            onLeave: () => { document.body.style.overflow = 'auto'; },
+            onEnterBack: () => { document.body.style.overflow = 'hidden'; },
+            onLeaveBack: () => { document.body.style.overflow = 'auto'; }
+          },
+          x: '100%',
+        });
+      }
     }
+  }
+
+  animateEarthCanvas(canvasElement: HTMLElement): void {
+    
   }
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     if (isPlatformBrowser(this.platformId)) {
-      const canvasElement = this.canvas.nativeElement;
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.body.scrollHeight;
-
-      // Calcula la posición del canvas basado en el scroll y reduce la velocidad
-      const maxScroll = documentHeight - windowHeight;
-      const scrollFraction = scrollPosition / maxScroll;
-      const canvasWidth = canvasElement.offsetWidth;
-      const maxTranslateX = window.innerWidth - canvasWidth;
-
-      // Ajusta la posición del canvas
-      const translateX = scrollFraction * maxTranslateX;
-      canvasElement.style.transform = `translateX(${translateX}px)`;
-
-      // Detiene el scroll de la página mientras el canvas se mueve
-      if (scrollFraction < 1) {
-        document.body.style.overflowY = 'hidden';
-      } else {
-        document.body.style.overflowY = 'auto';
-      }
-
-      if (!this.hasTyped && scrollFraction >= 1) {
+      if (!this.hasTyped) {
         this.launchTyping();
         this.hasTyped = true;
       }
     }
   }
-
-
 
 
 
@@ -104,7 +108,7 @@ export class AboutComponent implements AfterViewInit, OnInit {
     this.typeSubTitle();
     await this.delay(500);
     this.typeText(this.messagesService.getAboutText(), async () => {
-      await this.delay(600000);
+      await this.delay(6000);
       this.launchTyping();
     });
   }
