@@ -7,7 +7,6 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
 import { typeTextContent } from '../../../../shared/utils/text-typing.util';
 import { ThreeEarthService } from '../../../../core/services/three-earth.service';
 import { MessagesService } from '../../../../core/services/messages.service';
-//import { GsapService } from '../../../../core/services/gsap.service';
 
 gsap.registerPlugin(ScrollTrigger);
 @Component({
@@ -17,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent implements AfterViewInit, OnInit {
+export class AboutComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
   @ViewChild('textSection', { static: true }) textSection!: ElementRef<HTMLDivElement>;
 
@@ -30,43 +29,15 @@ export class AboutComponent implements AfterViewInit, OnInit {
     @Inject(PLATFORM_ID) private platformId: Object,
     private messagesService: MessagesService,
     private threeEarthService: ThreeEarthService,
-    //private gsapService: GsapService
   ) { }
 
-  ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-
-    }
-  }
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       if (this.canvas) {
-        const canvasElement = this.canvas.nativeElement;
         this.threeEarthService.init(this.canvas);
-
-        gsap.to('.square', {
-          
-          scrollTrigger: {
-            trigger: '.square',
-            start: 'center 75%',
-            end: 'bottom 85%',
-            scrub: true,
-            pin: true,
-            markers: true,
-            onEnter: () => { document.body.style.overflow = 'hidden'; },
-            onLeave: () => { document.body.style.overflow = 'auto'; },
-            onEnterBack: () => { document.body.style.overflow = 'hidden'; },
-            onLeaveBack: () => { document.body.style.overflow = 'auto'; }
-          },
-          x: '100%',
-        });
       }
     }
-  }
-
-  animateEarthCanvas(canvasElement: HTMLElement): void {
-    
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -78,8 +49,6 @@ export class AboutComponent implements AfterViewInit, OnInit {
       }
     }
   }
-
-
 
   private typeTitle() {
     const title = this.messagesService.getAboutTitle();
@@ -108,7 +77,7 @@ export class AboutComponent implements AfterViewInit, OnInit {
     this.typeSubTitle();
     await this.delay(500);
     this.typeText(this.messagesService.getAboutText(), async () => {
-      await this.delay(6000);
+      await this.delay(9000);
       this.launchTyping();
     });
   }
