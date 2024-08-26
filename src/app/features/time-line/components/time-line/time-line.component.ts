@@ -69,7 +69,7 @@ export class TimeLineComponent implements AfterViewInit {
 
     this.timeline.to('.timeline-item', {
       x: -totalWidth + window.innerWidth,
-      duration: this.timeLineItems.length, // Ajusta la duración según el número de elementos
+      duration: this.timeLineItems.length, 
       ease: 'none',
       });
   }
