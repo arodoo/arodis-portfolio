@@ -1,0 +1,30 @@
+:host {
+
+}
+
+.grid-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+:host .grid {
+    //position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 180px);
+    grid-template-rows: repeat(auto-fill, 180px);
+    pointer-events: none;
+    z-index: -1;
+    color: aqua;
+}
+
+:host .square {
+    width: 180px;
+    height: 180px;
+    background-color: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}

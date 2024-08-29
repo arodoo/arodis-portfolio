@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, Inject, PLATFORM_ID, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild, Inject, PLATFORM_ID, HostListener } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { gsap } from 'gsap';
@@ -8,11 +8,13 @@ import { typeTextContent } from '../../../../shared/utils/text-typing.util';
 import { ThreeEarthService } from '../../../../core/services/three-earth.service';
 import { MessagesService } from '../../../../core/services/messages.service';
 
+import { GridComponent } from '../../../../shared/components/grid/grid.component';
+
 gsap.registerPlugin(ScrollTrigger);
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [],
+  imports: [GridComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
