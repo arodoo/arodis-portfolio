@@ -14,11 +14,13 @@ export class GridComponent implements AfterViewInit {
 
   squares = Array(30).fill(0);
   lastScroll = 0;
+  private animations: gsap.core.Tween[] = [];
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngAfterViewInit(): void {
     this.initWaveAnimation();
+    this.initSquareAnimation();
   }
 
   initWaveAnimation() {
@@ -26,14 +28,37 @@ export class GridComponent implements AfterViewInit {
       console.log('initWaveAnimation');
 
       const grid = document.querySelector('.grid');
-      gsap.to(grid, {
+      const animation = gsap.to(grid, {
         duration: 20,
         backgroundPosition: '200% 0',
         repeat: -1,
         ease: 'sine.inOut'
       });
+      this.animations.push(animation);
     }
   }
+
+initSquareAnimation() {
+  if (isPlatformBrowser(this.platformId)) {
+    console.log('initSquareAnimations');
+
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+      const animation = gsap.to(square, {
+        duration: Math.random() * 3 + 2, // Duración aleatoria entre 2 y 5 segundos
+        y: Math.random() * 20 - 10, // Movimiento aleatorio en el eje Y
+        x: Math.random() * 20 - 10, // Movimiento aleatorio en el eje X
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: Math.random() * 2 // Retraso aleatorio
+      });
+      this.animations.push(animation);
+    });
+  }
+}
+
+
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
