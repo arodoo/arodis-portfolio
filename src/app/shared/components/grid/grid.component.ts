@@ -27,10 +27,10 @@ export class GridComponent implements AfterViewInit {
 
       const grid = document.querySelector('.grid');
       gsap.to(grid, {
-        duration: 10,
+        duration: 20,
         backgroundPosition: '200% 0',
         repeat: -1,
-        ease: 'linear'
+        ease: 'sine.inOut'
       });
     }
   }
