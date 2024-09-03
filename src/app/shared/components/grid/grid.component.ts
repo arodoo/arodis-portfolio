@@ -23,10 +23,11 @@ export class GridComponent implements AfterViewInit {
 
   initWaveAnimation() {
     if (isPlatformBrowser(this.platformId)) {
+      console.log('initWaveAnimation');
 
-      const squares = document.querySelectorAll('.square');
-      gsap.to(squares, {
-        duration: 2,
+      const grid = document.querySelector('.grid');
+      gsap.to(grid, {
+        duration: 10,
         backgroundPosition: '200% 0',
         repeat: -1,
         ease: 'linear'
@@ -36,19 +37,16 @@ export class GridComponent implements AfterViewInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    if (isPlatformBrowser(this.platformId)) {
-      const direction = window.scrollY > this.lastScroll ? 'down' : 'up';
-      this.lastScroll = window.scrollY;
-      this.updateScrollAnimation(direction);
-    }
+    const direction = window.scrollY > this.lastScroll ? 'down' : 'up';
+    this.lastScroll = window.scrollY;
+    this.updateScrollAnimation(direction);
   }
 
   updateScrollAnimation(direction: string) {
-    const squares = document.querySelectorAll('.square');
-    gsap.to(squares, {
+    const grid = document.querySelectorAll('.grid');
+    gsap.to(grid, {
       duration: 1,
-      y: direction === 'down' ? 20 : -20,
-      ease: 'bounce'
+      
     });
   }
 
