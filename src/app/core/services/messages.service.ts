@@ -5,8 +5,8 @@ import { randomMessages } from '../../shared/utils/messages';
   providedIn: 'root'
 })
 export class MessagesService {
-  private navBartitle: string = 'Hi, my name is Emmanuel';
-  private navBartext: string = 'And I am searching for a fun way to spend my life.';
+  private navBartitle: string = 'Hi, my name is Emmanuel and';
+  private navBartext: string = 'I am searching for a fun way to spend my life.';
 
   private aboutTitle: string = 'Time traveler';
   private aboutSubTitle: string = 'Space explorer';
