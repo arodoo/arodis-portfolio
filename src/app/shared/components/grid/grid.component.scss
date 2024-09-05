@@ -1,5 +1,5 @@
 :host {
-    display: inline-block;
+    //display: inline-block;
     position: relative;
     //background-color: rgba(0, 0, 0, 0.1);
 
@@ -8,6 +8,9 @@
 .grid-container {
     position: relative;
     margin-top: 15px;
+    display: flex;
+    justify-content: center;
+
 }
 
 .grid {
@@ -16,7 +19,7 @@
     width: 1800px;
     grid-template-columns: repeat(auto-fill, 180px);
     grid-template-rows: repeat(auto-fill, 180px);
-    background-image: linear-gradient(90deg, rgba(165, 20, 20, 0.253), rgba(169, 169, 169, 0.192), rgba(105, 105, 105, 0.24));
+    background-image: linear-gradient(90deg, rgba(133, 110, 110, 0.253), rgba(169, 169, 169, 0.192), rgba(105, 105, 105, 0.24));
     background-size: 200% 100%;
     pointer-events: none;
     overflow: hidden;

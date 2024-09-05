@@ -2,9 +2,6 @@
 canvas {
     max-width: 775px;
     max-height: 461px;
-    display: block;
-    background-color: rgba(0, 0, 0, 0.021);
-    border: none !important;
     position: relative;
 }
 
@@ -18,6 +15,16 @@ p{
 }
 .canvas-container {
     width: 100%;
+    align-items: start;
+        display: flex;
+        justify-content: flex-end;
 }
 
+.hidden-text {
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
 
+.visible-text {
+    opacity: 1;
+}

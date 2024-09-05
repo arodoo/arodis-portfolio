@@ -1,19 +1,19 @@
 <!--Dancing, coding, learning-->
 <app-grid>
-<div class="main">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="canvas-container">
-                <canvas #canvas id="scrollingCanvas"></canvas>
+    <div class="main">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="canvas-container">
+                    <canvas #canvas></canvas>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div #textSection>
+                    <h1 class="title">{{displayTitle}}</h1>
+                    <h2 class="subtitle">{{displaySubTitle}}</h2>
+                    <p class="text">{{displayText}}</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
-            <a>
-                <h1>{{displayTitle}}</h1>
-                <h2>{{displaySubTitle}}</h2>
-                <p>{{displayText}}</p>
-            </a>
-        </div>
     </div>
-</div>
 </app-grid>

@@ -4,7 +4,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { gsap } from 'gsap';
 import {ScrollTrigger} from 'gsap/ScrollTrigger';
 
-import { typeTextContent } from '../../../../shared/utils/text-typing.util';
 import { ThreeEarthService } from '../../../../core/services/three-earth.service';
 import { MessagesService } from '../../../../core/services/messages.service';
 
@@ -46,41 +45,72 @@ export class AboutComponent implements AfterViewInit {
   onWindowScroll() {
     if (isPlatformBrowser(this.platformId)) {
       if (!this.hasTyped) {
-        this.launchTyping();
+        this.makeTextVisible();
         this.hasTyped = true;
       }
     }
   }
 
-  private typeTitle() {
-    const title = this.messagesService.getAboutTitle();
-    typeTextContent(title, (char) => (this.displayTitle += char), 50);
+  private getTitle() {
+    return this.messagesService.getAboutTitle();
   }
 
-  private typeSubTitle() {
-    const subTitle = this.messagesService.getAboutSubTitle();
-    typeTextContent(subTitle, (char) => (this.displaySubTitle += char), 50);
+  private getSubTitle() {
+    return this.messagesService.getAboutSubTitle();
   }
 
-  private typeText(content: string, onComplete?: () => void) {
-    typeTextContent(content, (char) => (this.displayText += char), 50, onComplete);
+  private getText() {
+    return this.messagesService.getAboutText();
   }
 
   delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  async launchTyping() {
-    this.displayTitle = '';
-    this.displayText = '';
-    this.displaySubTitle = '';
-    this.typeTitle();
-    await this.delay(500);
-    this.typeSubTitle();
-    await this.delay(500);
-    this.typeText(this.messagesService.getAboutText(), async () => {
-      await this.delay(9000);
-      this.launchTyping();
+  private makeTextVisible() {
+    this.displayTitle = this.getTitle();
+    this.displaySubTitle = this.getSubTitle();
+    this.displayText = this.getText();
+    this.animateText(this.displayTitle, 'title');
+    this.animateText(this.displaySubTitle, 'subtitle');
+    this.animateText(this.displayText, 'text');
+  }
+
+  private animateText(text: string, type: string) {
+    const container = this.textSection.nativeElement.querySelector(`.${type}`);
+    if (!container) {
+      return;
+    }
+    container.innerHTML = '';
+    text.split('').forEach((char, index) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.opacity = '0';
+      container.appendChild(span);
+      gsap.to(span, {
+        opacity: 1,
+        delay: index * 0.04,
+        duration: 0.5,
+        onComplete: () => {
+          if (index === text.length - 1) {
+            setTimeout(() => {
+              this.makeTextInvisible(container as HTMLElement);
+            }, 15000);
+          }
+        }
+      });
     });
   }
+
+  private makeTextInvisible(container: HTMLElement){
+    gsap.to(container.children,{
+      opacity: 0,
+      duration: .5,
+      onComplete: ()=>{
+        this.makeTextVisible();
+      }
+    });
+  }
+
+
 }
