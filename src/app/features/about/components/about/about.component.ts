@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, ViewChild, Inject, PLATFORM_ID, H
 import { isPlatformBrowser } from '@angular/common';
 
 import { gsap } from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { ThreeEarthService } from '../../../../core/services/three-earth.service';
 import { MessagesService } from '../../../../core/services/messages.service';
@@ -25,6 +25,7 @@ export class AboutComponent implements AfterViewInit {
   displaySubTitle: string = '';
   displayText: string = '';
   hasTyped: boolean = false;
+  isAnimating: boolean = false;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -67,16 +68,24 @@ export class AboutComponent implements AfterViewInit {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  private makeTextVisible() {
+  private async makeTextVisible() {
+    if (this.isAnimating) {
+      return;
+    }
+    this.isAnimating = true;
+
     this.displayTitle = this.getTitle();
     this.displaySubTitle = this.getSubTitle();
     this.displayText = this.getText();
-    this.animateText(this.displayTitle, 'title');
-    this.animateText(this.displaySubTitle, 'subtitle');
-    this.animateText(this.displayText, 'text');
+    await this.animateText(this.displayTitle, 'title');
+    await this.animateText(this.displaySubTitle, 'subtitle');
+    await this.animateText(this.displayText, 'text');
+    setTimeout(() => {
+      this.resetText();
+    },10000);
   }
 
-  private animateText(text: string, type: string) {
+  private async animateText(text: string, type: string) {
     const container = this.textSection.nativeElement.querySelector(`.${type}`);
     if (!container) {
       return;
@@ -91,26 +100,23 @@ export class AboutComponent implements AfterViewInit {
         opacity: 1,
         delay: index * 0.04,
         duration: 0.5,
-        onComplete: () => {
-          if (index === text.length - 1) {
-            setTimeout(() => {
-              this.makeTextInvisible(container as HTMLElement);
-            }, 15000);
-          }
-        }
-      });
-    });
-  }
-
-  private makeTextInvisible(container: HTMLElement){
-    gsap.to(container.children,{
-      opacity: 0,
-      duration: .5,
-      onComplete: ()=>{
-        this.makeTextVisible();
+        
       }
+      );
     });
   }
 
+  resetText() {
+    console.log('resetText');
+    
+    this.displayTitle = '';
+    this.displaySubTitle = '';
+    this.displayText = '';
+    this.hasTyped = false;
 
+    setTimeout(() => {
+      this.isAnimating = false;
+      this.makeTextVisible();
+    }, 1000);
+  }
 }

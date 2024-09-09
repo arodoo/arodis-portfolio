@@ -21,6 +21,7 @@ export class GridComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initWaveAnimation();
     this.initSquareAnimation();
+    this.addMouseHoverEffect();
   }
 
   initWaveAnimation() {
@@ -46,8 +47,8 @@ initSquareAnimation() {
     squares.forEach(square => {
       const animation = gsap.to(square, {
         duration: Math.random() * 3 + 2, // Duración aleatoria entre 2 y 5 segundos
-        y: Math.random() * 20 - 10, // Movimiento aleatorio en el eje Y
-        x: Math.random() * 20 - 10, // Movimiento aleatorio en el eje X
+        y: Math.random() * 30 - 10, // Movimiento aleatorio en el eje Y
+        x: Math.random() * 30 - 10, // Movimiento aleatorio en el eje X
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut',
@@ -57,6 +58,20 @@ initSquareAnimation() {
     });
   }
 }
+
+  addMouseHoverEffect(){
+    if(isPlatformBrowser(this.platformId)){
+      const squares = document.querySelectorAll('.square');
+      squares.forEach(square => {
+        square.addEventListener('mouseenter', () => {
+          square.classList.add('gold');
+        });
+        square.addEventListener('mouseleave', () => {
+          square.classList.remove('gold');
+        });
+      })
+    }
+  }
 
 
 
