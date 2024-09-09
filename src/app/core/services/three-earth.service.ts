@@ -32,11 +32,11 @@ export class ThreeEarthService {
 
   private setupRenderer(canvas: ElementRef<HTMLCanvasElement>): void {
     this.renderer = new THREE.WebGLRenderer(
-      { 
+      {
         canvas: canvas.nativeElement,
-         antialias: true,
-         alpha: true 
-        });
+        antialias: true,
+        alpha: true
+      });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.shadowMap.enabled = true;

@@ -19,8 +19,8 @@ export class GridComponent implements AfterViewInit {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngAfterViewInit(): void {
-    this.initWaveAnimation();
-    this.initSquareAnimation();
+    //this.initWaveAnimation();
+    //this.initSquareAnimation();
     this.addMouseHoverEffect();
   }
 

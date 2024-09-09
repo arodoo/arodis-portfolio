@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { ThreeSharkServiceService } from '../../../../core/services/three-shark-service.service';
 
 @Component({
   selector: 'app-front-end-developer',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
   templateUrl: './front-end-developer.component.html',
   styleUrl: './front-end-developer.component.scss'
 })
-export class FrontEndDeveloperComponent {
+export class FrontEndDeveloperComponent implements AfterViewInit {
+  @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;
+
+  constructor(private threeSharkServiceService: ThreeSharkServiceService) { }
+
+  ngAfterViewInit(): void {
+    this.threeSharkServiceService.init(this.containerRef);
+  }
+
 
 }

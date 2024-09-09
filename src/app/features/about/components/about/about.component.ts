@@ -106,9 +106,7 @@ export class AboutComponent implements AfterViewInit {
     });
   }
 
-  resetText() {
-    console.log('resetText');
-    
+  resetText() {  
     this.displayTitle = '';
     this.displaySubTitle = '';
     this.displayText = '';
