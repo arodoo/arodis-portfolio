@@ -10,7 +10,7 @@ export class MessagesService {
 
   private aboutTitle: string = 'Time traveler';
   private aboutSubTitle: string = 'Space explorer';
-  private aboutText: string = '“What is this life? A frenzy, an illusion, a shadow, a delirium, a fiction. The greatest good’s but little, and this life is but a dream, and dreams are only dreams.”';
+  private aboutText: string = 'From Mexico to the space, from us to them';
 
   private randomMessages: string[] = randomMessages;
 
