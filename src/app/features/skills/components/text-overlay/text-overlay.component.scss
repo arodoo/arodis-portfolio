@@ -1,0 +1,8 @@
+.text-container {
+    position: relative;
+    z-index: 1;
+    /* Asegura que esté por encima del fondo */
+    color: white;
+    text-align: center;
+    padding: 20px;
+}

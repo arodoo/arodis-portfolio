@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ThreeSharkServiceService } from '../../../../core/services/three-shark-service.service';
+import * as THREE from 'three';
 
 @Component({
   selector: 'app-front-end-developer',
@@ -16,6 +17,5 @@ export class FrontEndDeveloperComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.threeSharkServiceService.init(this.containerRef);
   }
-
 
 }
