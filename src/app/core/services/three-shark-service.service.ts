@@ -35,10 +35,11 @@ export class ThreeSharkServiceService {
       this.sharkModel = gltf.scene;
       this.sharkModel.position.set(-30, -30, 0)
       this.sharkModel.rotation.y = Math.PI / 2;
+      this.sharkModel.rotation.x = (Math.PI / 2);
       this.scene.add(this.sharkModel);
 
       // Exponer el modelo globalmente
-      (window as any).sharkModel = this.sharkModel;
+/*       (window as any).sharkModel = this.sharkModel; */
 
       this.setUpAnimation(gltf.animations);
     }, undefined, (error) => {
@@ -49,7 +50,10 @@ export class ThreeSharkServiceService {
   private setUpAnimation(animations: THREE.AnimationClip[]): void {
     this.mixer = new THREE.AnimationMixer(this.sharkModel);
     animations.forEach((clip) => {
-      this.mixer.clipAction(clip).play();
+      const actions = this.mixer.clipAction(clip);
+      actions.loop = THREE.LoopRepeat;
+      actions.clampWhenFinished = true;
+      actions.play();
     })
   }
 
@@ -66,9 +70,6 @@ export class ThreeSharkServiceService {
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     container.nativeElement.appendChild(this.renderer.domElement);
-
-    // Expose the renderer to the window object for debugging purposes
-
   }
 
   private setupScene(): void {
