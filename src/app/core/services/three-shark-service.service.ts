@@ -56,7 +56,7 @@ export class ThreeSharkServiceService {
       animations.forEach((clip) =>{
         const adjustedClip = THREE.AnimationClip.parse(THREE.AnimationClip.toJSON(clip));
 
-        adjustedClip.duration-=1.05;
+        adjustedClip.duration-=.05;
 
         const action = mixer.clipAction(adjustedClip);
         action.loop = THREE.LoopRepeat;

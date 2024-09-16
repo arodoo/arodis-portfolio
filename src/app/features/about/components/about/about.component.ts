@@ -2,14 +2,13 @@ import { AfterViewInit, Component, ElementRef, ViewChild, Inject, PLATFORM_ID, H
 import { isPlatformBrowser } from '@angular/common';
 
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { ThreeEarthService } from '../../../../core/services/three-earth.service';
 import { MessagesService } from '../../../../core/services/messages.service';
 
 import { GridComponent } from '../../../../shared/components/grid/grid.component';
 
-gsap.registerPlugin(ScrollTrigger);
+
 @Component({
   selector: 'app-about',
   standalone: true,
@@ -100,7 +99,6 @@ export class AboutComponent implements AfterViewInit {
         opacity: 1,
         delay: index * 0.04,
         duration: 0.5,
-        
       }
       );
     });

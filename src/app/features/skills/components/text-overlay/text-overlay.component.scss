@@ -1,8 +1,6 @@
-.text-container {
-    position: relative;
-    z-index: 1;
-    /* Asegura que esté por encima del fondo */
-    color: white;
-    text-align: center;
-    padding: 20px;
+:host {
+    display: block;
+    opacity: 0;
+    transition: opacity 2s;
+    position: absolute;
 }
