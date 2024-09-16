@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { ThreeLucyService } from '../../../core/services/three-lucy.service';
+import { ThreeSharkServiceService } from '../../../core/services/three-shark-service.service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,13 @@ import { ThreeLucyService } from '../../../core/services/three-lucy.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements AfterViewInit {
-  @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;
+  @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;
 
-  constructor(private threeLucyService: ThreeLucyService) { }
+  constructor(private threeLucyService: ThreeLucyService,
+    private threeSharkServiceService: ThreeSharkServiceService
+  ) { }
 
   ngAfterViewInit(): void {
-    if (this.canvas) {
-      const canvasElement: ElementRef<HTMLCanvasElement> = this.canvas;
-      this.threeLucyService.init(canvasElement);
-    }
+    this.threeSharkServiceService.init(this.containerRef);
   }
 }
