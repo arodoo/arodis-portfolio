@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ThreeSharkServiceService } from './three-shark-service.service';
+import { ThreeSharkServiceService } from '../three-shark-service.service';
 
 describe('ThreeSharkServiceService', () => {
   let service: ThreeSharkServiceService;

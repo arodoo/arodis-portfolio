@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { GsapService } from './gsap.service';
+import { LoadingService } from './loading.service';
 
-describe('GsapService', () => {
-  let service: GsapService;
+describe('LoadingService', () => {
+  let service: LoadingService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(GsapService);
+    service = TestBed.inject(LoadingService);
   });
 
   it('should be created', () => {

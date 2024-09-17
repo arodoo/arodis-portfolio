@@ -10,7 +10,7 @@ export class MessagesService {
 
   private aboutTitle: string = 'Time traveler';
   private aboutSubTitle: string = 'Space explorer';
-  private aboutText: string = 'From Mexico to space, from space to sea, from sea to them';
+  private aboutText: string = 'From Mexico to space, from space to sea, from sea to us';
 
   private randomMessages: string[] = randomMessages;
 

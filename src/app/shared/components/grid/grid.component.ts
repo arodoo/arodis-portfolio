@@ -26,7 +26,7 @@ export class GridComponent implements AfterViewInit {
 
   initWaveAnimation() {
     if (isPlatformBrowser(this.platformId)) {
-      console.log('initWaveAnimation');
+      //console.log('initWaveAnimation');
 
       const grid = document.querySelector('.grid');
       const animation = gsap.to(grid, {
@@ -41,7 +41,7 @@ export class GridComponent implements AfterViewInit {
 
 initSquareAnimation() {
   if (isPlatformBrowser(this.platformId)) {
-    console.log('initSquareAnimations');
+    //console.log('initSquareAnimations');
 
     const squares = document.querySelectorAll('.square');
     squares.forEach(square => {

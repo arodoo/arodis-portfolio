@@ -3,7 +3,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 import { gsap } from 'gsap';
 
-import { ThreeEarthService } from '../../../../core/services/three-earth.service';
+import { ThreeEarthService } from '../../../../core/services/three-js/three-earth.service';
 import { MessagesService } from '../../../../core/services/messages.service';
 
 import { GridComponent } from '../../../../shared/components/grid/grid.component';

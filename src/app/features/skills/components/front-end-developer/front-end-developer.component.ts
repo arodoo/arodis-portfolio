@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TextOverlayComponent } from '../text-overlay/text-overlay.component';
 import { ScrollTrigger } from 'gsap/all';
 
-import { ThreeSharkServiceService } from '../../../../core/services/three-shark-service.service';
+import { ThreeSharkServiceService } from '../../../../core/services/three-js/three-shark-service.service';
 
 
 @Component({

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { ThreeLucyService } from '../../../core/services/three-lucy.service';
-import { ThreeSharkServiceService } from '../../../core/services/three-shark-service.service';
+import { ThreeLucyService } from '../../../core/services/three-js/three-lucy.service';
+import { ThreeSharkServiceService } from '../../../core/services/three-js/three-shark-service.service';
 
 @Component({
   selector: 'app-header',
