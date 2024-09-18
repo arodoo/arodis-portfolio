@@ -18,7 +18,10 @@ export class NavbarComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.launchTyping();
+    //await one second before starting typing
+    setTimeout(() => {
+      this.launchTyping();
+    }, 3000);
   }
 
   private typeTitle() {
