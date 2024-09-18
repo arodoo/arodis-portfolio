@@ -28,11 +28,11 @@ export class ThreeSharkServiceService {
       this.loadSharkModel(new THREE.Vector3(-30, -30, 0));
       setTimeout(() => {
         this.loadSharkModel(new THREE.Vector3(-50, 80, -280));
-      }, 600);
+      }, 1000);
     }
   }
 
-  loadSharkModel(position: THREE.Vector3){
+  loadSharkModel(position: THREE.Vector3) {
     const loader = new GLTFLoader();
     loader.load('models/glb/binary/megalodon.glb', (gltf) => {
       const sharkModel = gltf.scene;
@@ -51,20 +51,22 @@ export class ThreeSharkServiceService {
     });
   }
 
-    private setUpAnimation(animations: THREE.AnimationClip[], model: THREE.Group): void{
-      const mixer = new THREE.AnimationMixer(model);
-      animations.forEach((clip) =>{
-        const adjustedClip = THREE.AnimationClip.parse(THREE.AnimationClip.toJSON(clip));
+  private setUpAnimation(animations: THREE.AnimationClip[], model: THREE.Group): void {
+    const mixer = new THREE.AnimationMixer(model);
+    animations.forEach(clip => {
+      this.adjustAndConfigureAnimation(mixer, clip);
+    })
+    this.mixers.push(mixer);
+  }
 
-        adjustedClip.duration-=.05;
-
-        const action = mixer.clipAction(adjustedClip);
-        action.loop = THREE.LoopRepeat;
-        action.clampWhenFinished = true;
-        action.play();
-      })
-      this.mixers.push(mixer);
-    }
+  private adjustAndConfigureAnimation(mixer: THREE.AnimationMixer, clip: THREE.AnimationClip): void {
+    const adjustedClip = THREE.AnimationClip.parse(THREE.AnimationClip.toJSON(clip));
+    adjustedClip.duration -= .05;
+    const action = mixer.clipAction(adjustedClip);
+    action.loop = THREE.LoopRepeat;
+    action.clampWhenFinished = true;
+    action.play();
+  }
 
   private animate(): void {
     requestAnimationFrame(() => this.animate());
@@ -74,7 +76,7 @@ export class ThreeSharkServiceService {
   }
 
   private setupRender(container: ElementRef<HTMLDivElement>): void {
-    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     container.nativeElement.appendChild(this.renderer.domElement);
   }
@@ -90,11 +92,19 @@ export class ThreeSharkServiceService {
   }
 
   private setupLighting(): void {
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    this.scene.add(ambientLight);
+    this.addAmbientLight();
+    this.addDirectionalLight();
+  }
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    directionalLight.position.set(5, 5, 5).normalize();
+  private addAmbientLight(): void {
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    this.scene.add(ambientLight);
+  }
+
+  private addDirectionalLight(): void {
+    const dawnColor = 0xffd700;
+    const directionalLight = new THREE.DirectionalLight(dawnColor);
+    directionalLight.position.set(1, 0.5, 0.5).normalize();
     this.scene.add(directionalLight);
   }
 
@@ -110,12 +120,10 @@ export class ThreeSharkServiceService {
     }
   }
 
-  //load shark with position in -30, -30, 0
   public loadSharkModel1(): void {
     this.loadSharkModel(new THREE.Vector3(-30, -30, 0));
   }
 
-  //load shark with position in -40, 80, -280
   public loadSharkModel2(): void {
     this.loadSharkModel(new THREE.Vector3(-40, 80, -280));
   }

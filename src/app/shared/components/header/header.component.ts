@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { ThreeLucyService } from '../../../core/services/three-js/three-lucy.service';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ThreeSharkServiceService } from '../../../core/services/three-js/three-shark-service.service';
 
 @Component({
@@ -9,14 +8,15 @@ import { ThreeSharkServiceService } from '../../../core/services/three-js/three-
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements OnInit {
   @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;
 
-  constructor(private threeLucyService: ThreeLucyService,
-    private threeSharkServiceService: ThreeSharkServiceService
+  constructor(private threeSharkServiceService: ThreeSharkServiceService
   ) { }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
+    setTimeout(() => {
     this.threeSharkServiceService.init(this.containerRef);
+    }, 1000);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
+import { FishesComponent } from '../../../../shared/components/fishes/fishes.component';
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
 import { NavbarComponent } from '../../../../shared/components/navbar/navbar.component';
 import { AboutComponent } from '../../../about/components/about/about.component';
@@ -14,8 +15,9 @@ import { LoadingBarComponent } from '../../../../shared/animations/loading-bar/l
   selector: 'app-home',
   standalone: true,
   imports: [LoadingBarComponent,
-    HeaderComponent, FooterComponent, NavbarComponent, 
-    AboutComponent, FrontEndDeveloperComponent],
+    HeaderComponent, FishesComponent,
+    AboutComponent, FrontEndDeveloperComponent,
+    FooterComponent, NavbarComponent], 
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
