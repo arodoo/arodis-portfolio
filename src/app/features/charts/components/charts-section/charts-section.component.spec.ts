@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TextOverlayComponent } from './text-overlay.component';
+import { ChartsSectionComponent } from './charts-section.component';
 
-describe('TextOverlayComponent', () => {
-  let component: TextOverlayComponent;
-  let fixture: ComponentFixture<TextOverlayComponent>;
+describe('ChartsSectionComponent', () => {
+  let component: ChartsSectionComponent;
+  let fixture: ComponentFixture<ChartsSectionComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TextOverlayComponent]
+      imports: [ChartsSectionComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TextOverlayComponent);
+    fixture = TestBed.createComponent(ChartsSectionComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

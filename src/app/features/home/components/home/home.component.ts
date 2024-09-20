@@ -5,7 +5,8 @@ import { FishesComponent } from '../../../../shared/components/fishes/fishes.com
 import { FooterComponent } from '../../../../shared/components/footer/footer.component';
 import { NavbarComponent } from '../../../../shared/components/navbar/navbar.component';
 import { AboutComponent } from '../../../about/components/about/about.component';
-import { FrontEndDeveloperComponent } from '../../../skills/components/front-end-developer/front-end-developer.component';
+
+import { ChartsSectionComponent } from '../../../charts/components/charts-section/charts-section.component';
 
 //loading-bar
 import { LoadingService } from '../../../../core/services/loading.service';
@@ -15,17 +16,17 @@ import { LoadingBarComponent } from '../../../../shared/animations/loading-bar/l
   selector: 'app-home',
   standalone: true,
   imports: [LoadingBarComponent,
-    HeaderComponent, FishesComponent,
-    AboutComponent, FrontEndDeveloperComponent,
-    FooterComponent, NavbarComponent], 
+    HeaderComponent, FooterComponent, NavbarComponent,
+    AboutComponent, FishesComponent,
+  ChartsSectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
 
-  constructor(private loadingService: LoadingService) {}
+  constructor(private loadingService: LoadingService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     setTimeout(() => {
       this.loadingService.setLoading(false);
     }, 3000);

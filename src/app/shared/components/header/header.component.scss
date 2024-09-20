@@ -3,12 +3,13 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    //overflow: hidden;
+    overflow: hidden;
 }
 
 @media(max-width: 600px){
     .row{
         flex-direction: column;
+        overflow: visible;
         //padding: 30px;
     }
     #sharks-container {

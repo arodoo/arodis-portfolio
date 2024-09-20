@@ -6,9 +6,10 @@ p {
 nav {
     position: absolute;
     top: 0;
-    width: 100%;
+    width: auto;
     z-index: 2;
     margin: 64px 0 0 48px;
+    //overflow: hidden;
 }
 
 a {
