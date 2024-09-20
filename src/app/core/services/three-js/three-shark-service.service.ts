@@ -36,7 +36,13 @@ export class ThreeSharkServiceService {
     const loader = new GLTFLoader();
     loader.load('models/glb/binary/megalodon.glb', (gltf) => {
       const sharkModel = gltf.scene;
+
+      //adjust position depending on window size
+      if(window.innerWidth < 600) {
+        sharkModel.position.set(position.x, position.y, position.z - 160)
+      }else{      
       sharkModel.position.set(position.x, position.y, position.z)
+      }
       sharkModel.rotation.y = Math.PI / 2;
       sharkModel.rotation.x = (Math.PI / 2);
       this.scene.add(sharkModel);

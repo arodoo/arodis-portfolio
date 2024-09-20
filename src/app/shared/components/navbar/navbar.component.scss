@@ -1,12 +1,14 @@
-h1,p{
+h1,
+p {
     color: rgb(143 117 55);
 }
+
 nav {
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 2;
-    margin: 4rem 0 0 3rem;
+    margin: 64px 0 0 48px;
 }
 
 a {
@@ -14,40 +16,38 @@ a {
     flex-direction: column;
     white-space: wrap;
     overflow: hidden;
-    border-right: .05em solid orange;
-    /* Efecto de cursor */
+    border-right: 0.8px solid orange;
     font-family: monospace;
 }
 
 .line1,
 .line2 {
     display: block;
-    margin: .8rem 0;
+    margin: 12.8px 0;
 }
 
 .line1 {
-    font-size: 1.5rem;
+    font-size: 24px;
 }
 
 .line2 {
-    font-size: 1.1rem;
-    margin-left: .3rem;
+    font-size: 17.6px;
+    margin-left: 4.8px;
 }
 
-/* Media query para responsividad */
 @media (max-width: 600px) {
     .line1 {
-        font-size: 1.2rem;
-        margin: .5rem  0 0 .5rem;
+        font-size: 20.2px;
+        //margin: 4px 0 0 8px;
     }
 
     .line2 {
-        font-size: 0.9rem;
-        margin: 0.8rem 0 0 0.8rem;
+        font-size: 15.4px;
+        //margin: 12.8px 0 0 12.8px;
     }
 
     nav {
-        margin: 2rem 0 0 0;
+        margin: 32px 0 0 0;
+        padding: 10px;
     }
 }
-

@@ -33,7 +33,13 @@ export class ThreeAnimatedFishesService {
     const loader = new GLTFLoader();
     loader.load('models/glb/binary/animated-fishes.glb', (gltf) => {
       const fishesModel = gltf.scene;
+
+      //adjust position depending on window size
+      if(window.innerWidth < 600) {
+        fishesModel.position.set(position.x, position.y, position.z - .8)
+      }else{
       fishesModel.position.set(position.x, position.y, position.z);
+      }
       fishesModel.rotation.y = Math.PI / 2;
       fishesModel.rotation.x = (Math.PI / 2);
       this.scene.add(fishesModel);
