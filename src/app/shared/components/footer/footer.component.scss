@@ -1,0 +1,35 @@
+.footer-container {
+    position: relative;
+    align-items: center;
+    color: white;
+    padding: 20px;
+}
+
+
+  .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+  }
+.footer-left {
+    p {
+        font-size: 14px;
+        margin: 0;
+    }
+}
+
+.footer-right {
+    a {
+        color: white;
+        margin: 0 10px;
+        font-size: 20px;
+        text-decoration: none;
+
+        &:hover {
+            color: #ffeb3b;
+        }
+    }
+}
+
+
