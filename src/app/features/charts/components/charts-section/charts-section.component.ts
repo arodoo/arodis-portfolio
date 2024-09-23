@@ -3,6 +3,9 @@ import { Subscription } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
 import { ChartConfiguration, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -27,9 +30,26 @@ export class ChartsSectionComponent implements AfterViewInit {
     private chartsService: ChartsService,
     private renderer: Renderer2) {
     this.isBrowser = isPlatformBrowser(this.platformId);
+
+    this.scrollSubscription = this.scrollSubject.pipe(
+      debounceTime(500)
+    ).subscribe(() =>{
+      this.removeGlowClass();
+    });
   }
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  private scrollSubject = new Subject<void>();
+  private scrollSubscription !: Subscription;
+
+
+  intervalId: any;
+  suscription!: Subscription;
+
+  isBrowser: boolean;
+  
+  private srollTimeout: any;
 
   bubbleChartData: ChartConfiguration['data'] = {
     datasets: []
@@ -46,14 +66,6 @@ export class ChartsSectionComponent implements AfterViewInit {
   };
 
   bubbleChartType: ChartType = 'bubble';
-
-
-  intervalId: any;
-  suscription!: Subscription;
-
-  isBrowser: boolean;
-
-
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
@@ -76,13 +88,26 @@ export class ChartsSectionComponent implements AfterViewInit {
     }, 6000);
   }
 
-  //animate the bubbles with scroll
-  @HostListener('window:scroll', []) onWindowScroll(): void{
-    if(this.chart?.chart?.canvas){
+  @HostListener('window:scroll', []) onWindowScroll(): void {
+    if (this.chart?.chart?.canvas){
       const canvas = this.chart.chart.canvas;
-      this.renderer.addClass(canvas, 'bubble-glow');
+      if(!canvas.classList.contains('bubble-glow')){
+        this.renderer.addClass(canvas, 'bubble-glow');
+      }
+      this.scrollSubject.next();
+    }
+  }
+
+  removeGlowClass(): void {
+    console.log('removeGlowClass');
+    
+    if (this.chart?.chart?.canvas){
+      const canvas = this.chart.chart.canvas;
+      this.renderer.removeClass(canvas, 'bubble-glow');
+      this.renderer.addClass(canvas, 'bubble-fade');
+
       setTimeout(() => {
-        this.renderer.removeClass(canvas, 'bubble-glow');
+        this.renderer.removeClass(canvas, 'bubble-fade');
       }, 1000);
     }
   }

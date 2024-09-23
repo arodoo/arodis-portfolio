@@ -5,15 +5,17 @@
     align-items: center;
     color: white;
     padding: 20px;
+    min-height: 100vh;
 }
 
 
-  .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-  }
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
 .footer-left {
     p {
         font-size: 14px;
@@ -45,5 +47,3 @@
         margin-top: 10px;
     }
 }
-
-

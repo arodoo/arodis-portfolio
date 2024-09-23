@@ -9,8 +9,13 @@
     float: right;
 }
 
+.chart-canvas{
+    box-shadow: 0 0 5px rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
 .bubble-glow{
-    animation: glow 1s infinite alternate;
+    animation: glow 1s forwards;
 }
 
 @keyframes glow {
@@ -19,6 +24,20 @@
     }
     to{
         box-shadow: 0 0 20px rgb(255,255,255, 1);
+    }
+}
+
+.bubble-fade {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        box-shadow: 0 0 20px rgb(255, 255, 255, 1);
+    }
+
+    to {
+        box-shadow: 0 0 5px rgb(255, 255, 255);
     }
 }
 
