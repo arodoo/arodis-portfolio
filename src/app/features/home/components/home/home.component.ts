@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
 import { FishesComponent } from '../../../../shared/components/fishes/fishes.component';
@@ -22,11 +22,11 @@ import { LoadingBarComponent } from '../../../../shared/animations/loading-bar/l
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit {
 
   constructor(private loadingService: LoadingService) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     setTimeout(() => {
       this.loadingService.setLoading(false);
     }, 3000);

@@ -13,15 +13,13 @@ export interface BubbleDataSet{
 }
 
 export const BubbleRanges = {
-    x:{min: 0, max: 100},
-    y:{min: 0, max: 100},
-    r:{min: 0, max: 100}
+    x:{min: 0, max: 50},
+    y:{min: 0, max: 50},
+    r:{min: 0, max: 50}
 }
 
 //blue scale
 export const BubbleColors= [
-/*     {backgroundColor: 'rgba(54, 162, 235, 0.6)', borderColor: 'rgba(54, 162, 235, 1)'},,
-    {backgroundColor: 'rgba(75, 192, 192, 0.6)', borderColor: 'rgba(75, 192, 192, 1)'}, */
     //blue scale only
     {backgroundColor: 'rgba(100, 162, 235, 0.6)', borderColor: 'rgba(100, 162, 235, 1)'},
     {backgroundColor: 'rgba(125, 162, 235, 0.6)', borderColor: 'rgba(125, 162, 235, 1)'},
