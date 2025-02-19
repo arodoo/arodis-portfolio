@@ -16,16 +16,14 @@ import { TextSectionComponent } from '../text-section/text-section.component';
 
 
 @Component({
-  selector: 'app-charts-section',
-  standalone: true,
-  imports: [
-    CommonModule,
-    BaseChartDirective,
-
-    TextSectionComponent
-  ],
-  templateUrl: './charts-section.component.html',
-  styleUrl: './charts-section.component.scss'
+    selector: 'app-charts-section',
+    imports: [
+        CommonModule,
+        BaseChartDirective,
+        TextSectionComponent
+    ],
+    templateUrl: './charts-section.component.html',
+    styleUrl: './charts-section.component.scss'
 })
 export class ChartsSectionComponent implements AfterViewInit {
 

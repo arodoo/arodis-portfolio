@@ -10,14 +10,13 @@ import { Renderer2, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-loading-bar',
-  standalone: true,
-  imports: [CommonModule,
-    MatProgressBarModule,
-    MatCardModule
-  ],
-  templateUrl: './loading-bar.component.html',
-  styleUrl: './loading-bar.component.scss'
+    selector: 'app-loading-bar',
+    imports: [CommonModule,
+        MatProgressBarModule,
+        MatCardModule
+    ],
+    templateUrl: './loading-bar.component.html',
+    styleUrl: './loading-bar.component.scss'
 })
 export class LoadingBarComponent implements OnInit, OnDestroy {
 

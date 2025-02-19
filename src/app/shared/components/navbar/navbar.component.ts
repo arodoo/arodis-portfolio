@@ -3,11 +3,10 @@ import { typeTextContent } from '../../utils/text-typing.util';
 import { MessagesService } from '../../../core/services/messages.service';
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [],
-  templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss',
+    selector: 'app-navbar',
+    imports: [],
+    templateUrl: './navbar.component.html',
+    styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements AfterViewInit {
   displayTitle: string = '';

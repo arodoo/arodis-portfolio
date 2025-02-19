@@ -2,11 +2,10 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { ThreeSharkServiceService } from '../../../core/services/three-js/three-shark-service.service';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+    selector: 'app-header',
+    imports: [],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements AfterViewInit {
   @ViewChild('container', { static: true }) containerRef!: ElementRef<HTMLDivElement>;

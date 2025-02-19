@@ -10,11 +10,10 @@ import { GridComponent } from '../../../../shared/components/grid/grid.component
 
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [GridComponent],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+    selector: 'app-about',
+    imports: [GridComponent],
+    templateUrl: './about.component.html',
+    styleUrl: './about.component.scss'
 })
 export class AboutComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true }) canvas!: ElementRef<HTMLCanvasElement>;

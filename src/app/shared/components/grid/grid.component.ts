@@ -4,11 +4,10 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { gsap } from 'gsap';
 
 @Component({
-  selector: 'app-grid',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './grid.component.html',
-  styleUrl: './grid.component.scss'
+    selector: 'app-grid',
+    imports: [CommonModule],
+    templateUrl: './grid.component.html',
+    styleUrl: './grid.component.scss'
 })
 export class GridComponent implements AfterViewInit {
 

@@ -13,14 +13,12 @@ import { LoadingService } from '../../../../core/services/loading.service';
 import { LoadingBarComponent } from '../../../../shared/animations/loading-bar/loading-bar.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [LoadingBarComponent,
-    HeaderComponent, FooterComponent, NavbarComponent,
-    AboutComponent, FishesComponent,
-  ChartsSectionComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    imports: [LoadingBarComponent,
+        HeaderComponent, FooterComponent, NavbarComponent, FishesComponent,
+        ChartsSectionComponent],
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent implements AfterViewInit {
 
